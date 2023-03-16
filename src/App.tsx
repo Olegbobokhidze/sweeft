@@ -1,12 +1,12 @@
 import React, { Fragment } from "react";
 import { createGlobalStyle } from "styled-components";
-import FetchUsers from "./components/fetchUsers";
+import Users from "./components/fetchUsers";
 
 function App() {
   return (
     <Fragment>
       <GlobalStyle />
-      <FetchUsers />
+      <Users />
     </Fragment>
   );
 }

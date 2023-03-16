@@ -5,23 +5,24 @@ type User = {
   name: string;
   prefix: string;
   title: string;
+  lastName: string;
   imageUrl: string;
 };
 
 const useFetchUsers = () => {
   const [users, setUsers] = useState<User[]>([]);
-
+  const [page, setPage] = useState<number>(1);
+  const [userNumber, setUserNumber] = useState<number>(50);
   useEffect(() => {
     const fetchData = async () => {
       const response = await fetch(
-        "http://sweeftdigital-intern.eu-central-1.elasticbeanstalk.com/user/1/50"
+        `http://sweeftdigital-intern.eu-central-1.elasticbeanstalk.com/user/${page}/${userNumber}`
       );
       const data = await response.json();
       setUsers(data.list);
-      console.log(data);
     };
     fetchData();
-  }, []);
+  }, [page, userNumber]);
 
   return users;
 };
