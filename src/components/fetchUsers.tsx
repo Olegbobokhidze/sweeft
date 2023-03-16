@@ -25,7 +25,15 @@ const UserDiv = styled.div`
 const Img = styled.img`
   width: 100%;
 `;
-const FetchUsers = () => {
+const NameSurname = styled.h1`
+  font-size: 20px;
+  margin-left: 10px;
+`;
+const UserTitle = styled.p`
+  font-size: 15px;
+  margin-left: 10px;
+`;
+const Users = () => {
   const userList = useFetchUsers();
   return (
     <Wrapper>
@@ -33,8 +41,10 @@ const FetchUsers = () => {
         return (
           <UserDiv key={user.id}>
             <Img alt="userimg" src={user.imageUrl} />
-            <h1>{user.name}</h1>
-            <p>{user.title}</p>
+            <NameSurname>
+              {user.prefix} {user.name} {user.lastName}
+            </NameSurname>
+            <UserTitle>{user.title}</UserTitle>
           </UserDiv>
         );
       })}
@@ -42,4 +52,4 @@ const FetchUsers = () => {
   );
 };
 
-export default FetchUsers;
+export default Users;
