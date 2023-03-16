@@ -1,19 +1,22 @@
 import React from "react";
+import useFetchUsers from "./hooks/useFetchUsers";
 function App() {
+  const userList = useFetchUsers();
   return (
     <div className="App">
       <header className="App-header">
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        {userList.length > 0
+          ? userList.map((user) => {
+              return (
+                <div key={user.id}>
+                  <p>{user.name}</p>
+                  <p>{user.prefix}</p>
+                  <p>{user.title}</p>
+                  <img alt="rere" src={user.imageUrl} />
+                </div>
+              );
+            })
+          : null}
       </header>
     </div>
   );
