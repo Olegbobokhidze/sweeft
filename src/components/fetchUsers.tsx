@@ -37,16 +37,16 @@ const Users = () => {
   const userList = useFetchUsers();
   return (
     <Wrapper>
-      {userList.map((user) => {
-        return (
-          <UserDiv key={user.id}>
+      {userList.map((user, id) => {
+        return user ? (
+          <UserDiv key={id}>
             <Img alt="userimg" src={user.imageUrl} />
             <NameSurname>
               {user.prefix} {user.name} {user.lastName}
             </NameSurname>
             <UserTitle>{user.title}</UserTitle>
           </UserDiv>
-        );
+        ) : null;
       })}
     </Wrapper>
   );
