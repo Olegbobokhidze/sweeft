@@ -1,25 +1,25 @@
-import React from "react";
-import useFetchUsers from "./hooks/useFetchUsers";
+import React, { Fragment } from "react";
+import { createGlobalStyle } from "styled-components";
+import FetchUsers from "./components/fetchUsers";
+
 function App() {
-  const userList = useFetchUsers();
   return (
-    <div className="App">
-      <header className="App-header">
-        {userList.length > 0
-          ? userList.map((user) => {
-              return (
-                <div key={user.id}>
-                  <p>{user.name}</p>
-                  <p>{user.prefix}</p>
-                  <p>{user.title}</p>
-                  <img alt="rere" src={user.imageUrl} />
-                </div>
-              );
-            })
-          : null}
-      </header>
-    </div>
+    <Fragment>
+      <GlobalStyle />
+      <FetchUsers />
+    </Fragment>
   );
 }
-
+const GlobalStyle = createGlobalStyle`
+ *{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+ }
+  body{
+    padding: 20px;
+    width: 100%;
+    height: 100vh;
+  }
+`;
 export default App;
