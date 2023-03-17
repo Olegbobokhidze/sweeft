@@ -1,5 +1,4 @@
-import { Fragment, useEffect, useState } from "react";
-import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components";
 import useFetchUserFriends from "../hooks/useFetchUserFriends";
 import useGetUser from "../hooks/useGetUser";
@@ -78,8 +77,6 @@ const UserProfile = ({ userLink, setUserLink }: Props) => {
   const user = useGetUser(Number(id));
   const userFriends = useFetchUserFriends(Number(id));
   const navigate = useNavigate();
-  const location = useLocation();
-  console.log(location.pathname);
   return (
     <Main>
       <Wrapper>
