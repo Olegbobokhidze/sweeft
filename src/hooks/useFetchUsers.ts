@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, UIEvent } from "react";
 import { User } from "../types/Types";
 
 const useFetchUsers = () => {
