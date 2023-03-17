@@ -12,6 +12,7 @@ import {
 const Users = () => {
   const userList = useFetchUsers();
   const navigate = useNavigate();
+
   return (
     <UsersWrapper>
       {userList.map((user, id) => {

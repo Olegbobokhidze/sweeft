@@ -1,4 +1,4 @@
-import { Fragment } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components";
 import useFetchUserFriends from "../hooks/useFetchUserFriends";
@@ -66,12 +66,20 @@ const Main = styled.div`
   border: 1px solid black;
   padding: 15px;
 `;
-const UserProfile = () => {
+interface Props {
+  userLink: {
+    name: string;
+    link: string;
+  }[];
+  setUserLink: any;
+}
+const UserProfile = ({ userLink, setUserLink }: Props) => {
   const { id } = useParams();
   const user = useGetUser(Number(id));
   const userFriends = useFetchUserFriends(Number(id));
   const navigate = useNavigate();
   const location = useLocation();
+  console.log(location.pathname);
   return (
     <Main>
       <Wrapper>
@@ -144,6 +152,25 @@ const UserProfile = () => {
           </div>
         </Box>
       </Wrapper>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignSelf: "flex-start",
+          marginTop: "15px",
+          marginBottom: "15px",
+          width: "100%",
+          flexDirection: "row",
+        }}
+      >
+        {userLink.map((curr) => {
+          return (
+            <p style={{ width: "100%" }} onClick={() => navigate(curr.link)}>
+              {curr.name}
+            </p>
+          );
+        })}
+      </div>
       <h1
         style={{
           alignSelf: "flex-start",
@@ -160,7 +187,13 @@ const UserProfile = () => {
               key={id}
               onClick={() => {
                 navigate(`/user/${user.id}`);
-                window.location.reload();
+                setUserLink((prevState: any) => [
+                  ...prevState,
+                  {
+                    name: `${user?.prefix} ${user?.name} ${user?.lastName}`,
+                    link: `/user/${user.id}`,
+                  },
+                ]);
               }}
             >
               <UserImg alt="userimg" src={user.imageUrl} />

@@ -4,7 +4,7 @@ import { User } from "../types/Types";
 const useFetchUsers = () => {
   const [users, setUsers] = useState<User[]>([]);
   const [page, setPage] = useState<number>(1);
-  const [userNumber, setUserNumber] = useState<number>(100);
+  const [userNumber, setUserNumber] = useState<number>(30);
   useEffect(() => {
     const fetchData = async () => {
       const response = await fetch(
