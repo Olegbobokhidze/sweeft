@@ -1,12 +1,17 @@
 import React, { Fragment } from "react";
 import { createGlobalStyle } from "styled-components";
 import Users from "./components/fetchUsers";
+import { Route, Routes, useLocation } from "react-router-dom";
+import UserProfile from "./components/userProfile";
 
 function App() {
   return (
     <Fragment>
       <GlobalStyle />
-      <Users />
+      <Routes>
+        <Route element={<Users />} path="/" />
+        <Route element={<UserProfile />} path="/user/:id" />
+      </Routes>
     </Fragment>
   );
 }
