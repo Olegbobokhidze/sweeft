@@ -65,6 +65,15 @@ const Main = styled.div`
   border: 1px solid black;
   padding: 15px;
 `;
+const Link = styled.p`
+  text-decoration: underline;
+  color: blue;
+  cursor: pointer;
+  &:hover {
+    font-weight: bold;
+  }
+`;
+
 interface Props {
   userLink: {
     name: string;
@@ -160,13 +169,13 @@ const UserProfile = ({ userLink, setUserLink }: Props) => {
       >
         {userLink.map((curr, id) => {
           return (
-            <p
+            <Link
               key={id}
               style={{ width: "100%" }}
               onClick={() => navigate(curr.link)}
             >
               {curr.name} {">"}
-            </p>
+            </Link>
           );
         })}
       </div>
