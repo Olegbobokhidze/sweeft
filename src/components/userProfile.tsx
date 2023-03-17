@@ -57,6 +57,15 @@ const BoldText = styled.h2`
 const Paragraph = styled.p`
   font-size: 20px;
 `;
+const Main = styled.div`
+  max-width: 1200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid black;
+  padding: 15px;
+`;
 const UserProfile = () => {
   const { id } = useParams();
   const user = useGetUser(Number(id));
@@ -64,7 +73,7 @@ const UserProfile = () => {
   const navigate = useNavigate();
   const location = useLocation();
   return (
-    <Fragment>
+    <Main>
       <Wrapper>
         <Img src={user?.imageUrl} alt="userimg" />
         <Box>
@@ -135,7 +144,15 @@ const UserProfile = () => {
           </div>
         </Box>
       </Wrapper>
-      <h1>Friends: </h1>
+      <h1
+        style={{
+          alignSelf: "flex-start",
+          marginTop: "15px",
+          marginBottom: "15px",
+        }}
+      >
+        Friends:{" "}
+      </h1>
       <UsersWrapper>
         {userFriends.map((user, id) => {
           return user ? (
@@ -155,7 +172,7 @@ const UserProfile = () => {
           ) : null;
         })}
       </UsersWrapper>
-    </Fragment>
+    </Main>
   );
 };
 export default UserProfile;
