@@ -1,16 +1,26 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useState } from "react";
 import { createGlobalStyle } from "styled-components";
 import Users from "./components/fetchUsers";
 import { Route, Routes, useLocation } from "react-router-dom";
 import UserProfile from "./components/userProfile";
 
+interface UserLink {
+  name: string;
+  link: string;
+}
 function App() {
+  const [userLink, setUserLink] = useState<UserLink[]>([]);
   return (
     <Fragment>
       <GlobalStyle />
       <Routes>
         <Route element={<Users />} path="/" />
-        <Route element={<UserProfile />} path="/user/:id" />
+        <Route
+          element={
+            <UserProfile userLink={userLink} setUserLink={setUserLink} />
+          }
+          path="/user/:id"
+        />
       </Routes>
     </Fragment>
   );
