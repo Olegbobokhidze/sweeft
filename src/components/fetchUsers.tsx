@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import useFetchUsers from "../hooks/useFetchUsers";
+import useGetUser from "../hooks/useGetUser";
 const Wrapper = styled.div`
   display: grid;
   grid-template-columns: auto auto;
@@ -18,6 +19,7 @@ const UserDiv = styled.div`
   flex-direction: column;
   gap: 10px;
   border: 1px solid grey;
+  cursor: pointer;
   @media screen and (min-width: 1200px) {
     max-width: 300px;
   }
@@ -35,6 +37,7 @@ const UserTitle = styled.p`
 `;
 const Users = () => {
   const userList = useFetchUsers();
+
   return (
     <Wrapper>
       {userList.map((user, id) => {
