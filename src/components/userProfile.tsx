@@ -152,18 +152,20 @@ const UserProfile = ({ userLink, setUserLink }: Props) => {
       <div
         style={{
           display: "flex",
-          justifyContent: "space-between",
           alignSelf: "flex-start",
           marginTop: "15px",
           marginBottom: "15px",
-          width: "100%",
           flexDirection: "row",
         }}
       >
-        {userLink.map((curr) => {
+        {userLink.map((curr, id) => {
           return (
-            <p style={{ width: "100%" }} onClick={() => navigate(curr.link)}>
-              {curr.name}
+            <p
+              key={id}
+              style={{ width: "100%" }}
+              onClick={() => navigate(curr.link)}
+            >
+              {curr.name} {">"}
             </p>
           );
         })}
