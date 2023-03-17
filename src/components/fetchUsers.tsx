@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import useFetchUsers from "../hooks/useFetchUsers";
 const Wrapper = styled.div`
@@ -36,12 +37,12 @@ const UserTitle = styled.p`
 `;
 const Users = () => {
   const userList = useFetchUsers();
-
+  const navigate = useNavigate();
   return (
     <Wrapper>
       {userList.map((user, id) => {
         return user ? (
-          <UserDiv key={id}>
+          <UserDiv key={id} onClick={() => navigate(`/user/${user.id}`)}>
             <Img alt="userimg" src={user.imageUrl} />
             <NameSurname>
               {user.prefix} {user.name} {user.lastName}
