@@ -1,13 +1,5 @@
 import { useState, useEffect } from "react";
-
-type User = {
-  id: number;
-  name: string;
-  prefix: string;
-  title: string;
-  lastName: string;
-  imageUrl: string;
-};
+import { User } from "../types/Types";
 
 const useFetchUsers = () => {
   const [users, setUsers] = useState<User[]>([]);

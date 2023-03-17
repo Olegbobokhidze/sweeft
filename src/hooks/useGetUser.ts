@@ -1,30 +1,8 @@
 import { useState, useEffect } from "react";
-type User = {
-  id: number;
-  name: string;
-  lastName: string;
-  prefix: string;
-  title: string;
-  jobDescriptor: string;
-  jobArea: string;
-  jobType: string;
-  email: string;
-  ip: string;
-  imageUrl: string;
-  company: {
-    name: string;
-    suffix: string;
-  };
-  address: {
-    zipCode: string;
-    city: string;
-    streetAddress: string;
-    country: string;
-    state: string;
-  };
-};
+import { FullUser } from "../types/Types";
+
 const useGetUser = (id: number) => {
-  const [user, setUser] = useState<User>();
+  const [user, setUser] = useState<FullUser>();
   useEffect(() => {
     const fetchData = async () => {
       const response = await fetch(

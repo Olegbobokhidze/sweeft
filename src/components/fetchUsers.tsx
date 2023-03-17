@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import useFetchUsers from "../hooks/useFetchUsers";
-import useGetUser from "../hooks/useGetUser";
 const Wrapper = styled.div`
   display: grid;
   grid-template-columns: auto auto;
