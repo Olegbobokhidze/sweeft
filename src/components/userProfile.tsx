@@ -1,8 +1,15 @@
 import { Fragment } from "react";
-import { useParams } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components";
 import useFetchUserFriends from "../hooks/useFetchUserFriends";
 import useGetUser from "../hooks/useGetUser";
+import {
+  NameSurname,
+  UserDiv,
+  UserImg,
+  UsersWrapper,
+  UserTitle,
+} from "../styles/styled";
 const Wrapper = styled.div`
   width: 100%;
   display: flex;
@@ -12,6 +19,8 @@ const Wrapper = styled.div`
   gap: 15px;
   @media screen and (min-width: 1200px) {
     flex-direction: row;
+    align-items: center;
+    justify-content: center;
   }
 `;
 const Img = styled.img`
@@ -52,6 +61,8 @@ const UserProfile = () => {
   const { id } = useParams();
   const user = useGetUser(Number(id));
   const userFriends = useFetchUserFriends(Number(id));
+  const navigate = useNavigate();
+  const location = useLocation();
   return (
     <Fragment>
       <Wrapper>
@@ -123,8 +134,27 @@ const UserProfile = () => {
             <Paragraph>{user?.address.zipCode}</Paragraph>
           </div>
         </Box>
-        <h1>Friends: </h1>
       </Wrapper>
+      <h1>Friends: </h1>
+      <UsersWrapper>
+        {userFriends.map((user, id) => {
+          return user ? (
+            <UserDiv
+              key={id}
+              onClick={() => {
+                navigate(`/user/${user.id}`);
+                window.location.reload();
+              }}
+            >
+              <UserImg alt="userimg" src={user.imageUrl} />
+              <NameSurname>
+                {user.prefix} {user.name} {user.lastName}
+              </NameSurname>
+              <UserTitle>{user.title}</UserTitle>
+            </UserDiv>
+          ) : null;
+        })}
+      </UsersWrapper>
     </Fragment>
   );
 };
