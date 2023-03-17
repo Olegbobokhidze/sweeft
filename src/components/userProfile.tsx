@@ -60,48 +60,58 @@ const UserProfile = () => {
         <Paragraph style={{ fontStyle: "italic", marginBottom: "14px" }}>
           {user?.title}
         </Paragraph>
-        <Paragraph style={{ display: "flex", gap: "5px" }}>
-          <p style={{ textDecoration: "underline" }}>Email: </p>
-          {user?.email}
-        </Paragraph>
-        <Paragraph style={{ display: "flex", gap: "5px" }}>
-          <p style={{ textDecoration: "underline" }}>Ip Address: </p>
-          {user?.ip}
-        </Paragraph>
-        <Paragraph style={{ display: "flex", gap: "5px" }}>
-          <p style={{ textDecoration: "underline" }}>Job Area: </p>
-          {user?.jobArea}
-        </Paragraph>
-        <Paragraph style={{ display: "flex", gap: "5px" }}>
-          <p style={{ textDecoration: "underline" }}>Job Type: </p>
-          {user?.jobType}
-        </Paragraph>
+        <div style={{ display: "flex", gap: "5px" }}>
+          <Paragraph style={{ textDecoration: "underline" }}>Email: </Paragraph>
+          <Paragraph>{user?.email}</Paragraph>
+        </div>
+        <div style={{ display: "flex", gap: "5px" }}>
+          <Paragraph style={{ textDecoration: "underline" }}>
+            Ip Address:{" "}
+          </Paragraph>
+          <Paragraph>{user?.ip}</Paragraph>
+        </div>
+        <div style={{ display: "flex", gap: "5px" }}>
+          <Paragraph style={{ textDecoration: "underline" }}>
+            Job Area:{" "}
+          </Paragraph>
+          <Paragraph>{user?.jobArea}</Paragraph>
+        </div>
+        <div style={{ display: "flex", gap: "5px" }}>
+          <Paragraph style={{ textDecoration: "underline" }}>
+            Job Type:{" "}
+          </Paragraph>
+          <Paragraph>{user?.jobType}</Paragraph>
+        </div>
       </Box>
       <Box>
         <AbsoluteText>Address</AbsoluteText>
         <BoldText>
           {user?.company.name} {user?.company.suffix}
         </BoldText>
-        <Paragraph style={{ display: "flex", gap: "5px" }}>
-          <p style={{ textDecoration: "underline" }}>City: </p>
-          {user?.address.city}
-        </Paragraph>
-        <Paragraph style={{ display: "flex", gap: "5px" }}>
-          <p style={{ textDecoration: "underline" }}>Country: </p>
-          {user?.address.country}
-        </Paragraph>
-        <Paragraph style={{ display: "flex", gap: "5px" }}>
-          <p style={{ textDecoration: "underline" }}>State: </p>
-          {user?.address.state}
-        </Paragraph>
-        <Paragraph style={{ display: "flex", gap: "5px" }}>
-          <p style={{ textDecoration: "underline" }}>Street Address: </p>
-          {user?.address.streetAddress}
-        </Paragraph>
-        <Paragraph style={{ display: "flex", gap: "5px" }}>
-          <p style={{ textDecoration: "underline" }}>Zip: </p>
-          {user?.address.zipCode}
-        </Paragraph>
+        <div style={{ display: "flex", gap: "5px" }}>
+          <Paragraph style={{ textDecoration: "underline" }}>City: </Paragraph>
+          <Paragraph>{user?.address.city}</Paragraph>
+        </div>
+        <div style={{ display: "flex", gap: "5px" }}>
+          <Paragraph style={{ textDecoration: "underline" }}>
+            Country:{" "}
+          </Paragraph>
+          <Paragraph>{user?.address.country}</Paragraph>
+        </div>
+        <div style={{ display: "flex", gap: "5px" }}>
+          <Paragraph style={{ textDecoration: "underline" }}>State: </Paragraph>
+          <Paragraph>{user?.address.state}</Paragraph>
+        </div>
+        <div style={{ display: "flex", gap: "5px" }}>
+          <Paragraph style={{ textDecoration: "underline" }}>
+            Street Address:{" "}
+          </Paragraph>
+          <Paragraph>{user?.address.streetAddress}</Paragraph>
+        </div>
+        <div style={{ display: "flex", gap: "5px" }}>
+          <Paragraph style={{ textDecoration: "underline" }}>Zip: </Paragraph>
+          <Paragraph>{user?.address.zipCode}</Paragraph>
+        </div>
       </Box>
     </Wrapper>
   );
