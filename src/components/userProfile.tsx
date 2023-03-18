@@ -70,8 +70,9 @@ const Link = styled.p`
   text-decoration: underline;
   color: blue;
   cursor: pointer;
+  display: inline-block;
   &:hover {
-    font-weight: bold;
+    color: black;
   }
 `;
 
@@ -161,20 +162,17 @@ const UserProfile = ({ userLink, setUserLink }: Props) => {
       </Wrapper>
       <div
         style={{
-          display: "flex",
           alignSelf: "flex-start",
+
           marginTop: "15px",
           marginBottom: "15px",
-          flexDirection: "row",
+
+          maxWidth: "1200px",
         }}
       >
         {userLink.map((curr, id) => {
           return (
-            <Link
-              key={id}
-              style={{ width: "100%" }}
-              onClick={() => navigate(curr.link)}
-            >
+            <Link key={id} onClick={() => navigate(curr.link)}>
               {curr.name} {">"}
             </Link>
           );
@@ -191,7 +189,7 @@ const UserProfile = ({ userLink, setUserLink }: Props) => {
       </h1>
       <UsersWrapper>
         {userFriends.map((user, id) => {
-          return user ? (
+          return (
             <UserDiv
               key={id}
               onClick={() => {
@@ -213,7 +211,7 @@ const UserProfile = ({ userLink, setUserLink }: Props) => {
               </NameSurname>
               <UserTitle>{user.title}</UserTitle>
             </UserDiv>
-          ) : null;
+          );
         })}
       </UsersWrapper>
     </Main>
