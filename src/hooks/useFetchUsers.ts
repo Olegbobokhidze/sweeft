@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { User } from "../types/Types";
+import { filterObjectWithId } from "../utils";
 
 const useFetchUsers = (userId?: number, isFriend?: boolean) => {
   const [users, setUsers] = useState<User[]>([]);
@@ -34,8 +35,11 @@ const useFetchUsers = (userId?: number, isFriend?: boolean) => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   });
-
-  return users;
+  const handleUserClick = (userId: number) => {
+    const updatedUsers = filterObjectWithId(users, userId);
+    setUsers(updatedUsers);
+  };
+  return { users, handleUserClick };
 };
 
 export default useFetchUsers;

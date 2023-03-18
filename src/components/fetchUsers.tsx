@@ -15,7 +15,7 @@ const Users = () => {
 
   return (
     <UsersWrapper>
-      {userList.map((user, id) => {
+      {userList.users.map((user, id) => {
         return user ? (
           <UserDiv key={id} onClick={() => navigate(`/user/${user.id}`)}>
             <UserImg alt="userimg" src={user.imageUrl} />
