@@ -9,6 +9,7 @@ import {
   UsersWrapper,
   UserTitle,
 } from "../styles/styled";
+import { removeObjectWithId } from "../utils";
 const Wrapper = styled.div`
   width: 100%;
   display: flex;
@@ -202,6 +203,8 @@ const UserProfile = ({ userLink, setUserLink }: Props) => {
                     link: `/user/${user.id}`,
                   },
                 ]);
+                removeObjectWithId(userFriends, user.id);
+                window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
               }}
             >
               <UserImg alt="userimg" src={user.imageUrl} />
