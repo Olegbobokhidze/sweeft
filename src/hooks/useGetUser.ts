@@ -10,7 +10,6 @@ const useGetUser = (id: number) => {
       );
       const data = await response.json();
       setUser(data);
-      console.log(data);
     };
     fetchData();
   }, [id]);

@@ -17,8 +17,6 @@ const useFetchUsers = (userId?: number, isFriend?: boolean) => {
       if (Array.isArray(data.list)) {
         setUsers((prev) => [...prev, ...data.list]);
       }
-      console.log(data.list);
-      console.log(data);
     };
 
     fetchData();
