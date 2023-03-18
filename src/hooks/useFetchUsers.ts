@@ -18,10 +18,11 @@ const useFetchUsers = (userId?: number, isFriend?: boolean) => {
         setUsers((prev) => [...prev, ...data.list]);
       }
       console.log(data.list);
+      console.log(data);
     };
 
     fetchData();
-  }, [page, userNumber, userId, isFriend]);
+  }, [isFriend, userId, page, userNumber]);
 
   useEffect(() => {
     const handleScroll = (e: any) => {
