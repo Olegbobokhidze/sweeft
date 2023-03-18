@@ -1,9 +1,3 @@
-export const removeObjectWithId = (arr: any, id: number) => {
-  const objWithIdIndex = arr.findIndex((obj: any) => obj.id === id);
-
-  if (objWithIdIndex > -1) {
-    arr.splice(objWithIdIndex, 1);
-  }
-
-  return arr;
+export const filterObjectWithId = (arr: any, id: number) => {
+  return arr.filter((obj: any) => obj.id !== id);
 };

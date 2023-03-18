@@ -9,7 +9,7 @@ import {
   UsersWrapper,
   UserTitle,
 } from "../styles/styled";
-import { removeObjectWithId } from "../utils";
+import { filterObjectWithId } from "../utils";
 const Wrapper = styled.div`
   width: 100%;
   display: flex;
@@ -188,7 +188,7 @@ const UserProfile = ({ userLink, setUserLink }: Props) => {
         Friends:{" "}
       </h1>
       <UsersWrapper>
-        {userFriends.map((user, id) => {
+        {userFriends.users.map((user, id) => {
           return (
             <UserDiv
               key={id}
@@ -201,7 +201,7 @@ const UserProfile = ({ userLink, setUserLink }: Props) => {
                     link: `/user/${user.id}`,
                   },
                 ]);
-                removeObjectWithId(userFriends, user.id);
+                userFriends.handleUserClick(user.id);
                 window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
               }}
             >
