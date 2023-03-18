@@ -6,7 +6,7 @@ const useGetUser = (id: number) => {
   useEffect(() => {
     const fetchData = async () => {
       const response = await fetch(
-        `https://sweeftdigital-intern.eu-central-1.elasticbeanstalk.com/user/${id}`
+        `http://sweeftdigital-intern.eu-central-1.elasticbeanstalk.com/user/${id}`
       );
       const data = await response.json();
       setUser(data);

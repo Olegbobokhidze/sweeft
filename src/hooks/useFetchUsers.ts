@@ -8,9 +8,9 @@ const useFetchUsers = (userId?: number, isFriend?: boolean) => {
 
   useEffect(() => {
     const fetchData = async () => {
-      let url = `https://sweeftdigital-intern.eu-central-1.elasticbeanstalk.com/user/${page}/${userNumber}`;
+      let url = `http://sweeftdigital-intern.eu-central-1.elasticbeanstalk.com/user/${page}/${userNumber}`;
       if (isFriend && userId) {
-        url = `https://sweeftdigital-intern.eu-central-1.elasticbeanstalk.com/user/${userId}/friends/${page}/${userNumber}`;
+        url = `http://sweeftdigital-intern.eu-central-1.elasticbeanstalk.com/user/${userId}/friends/${page}/${userNumber}`;
       }
       const response = await fetch(url);
       const data = await response.json();
