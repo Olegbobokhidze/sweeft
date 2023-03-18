@@ -1,15 +1,18 @@
 import { useState, useEffect } from "react";
 import { User } from "../types/Types";
 
-const useFetchUsers = () => {
+const useFetchUsers = (userId?: number, isFriend?: boolean) => {
   const [users, setUsers] = useState<User[]>([]);
   const [page, setPage] = useState<number>(1);
   const [userNumber, setUserNumber] = useState<number>(30);
+
   useEffect(() => {
     const fetchData = async () => {
-      const response = await fetch(
-        `http://sweeftdigital-intern.eu-central-1.elasticbeanstalk.com/user/${page}/${userNumber}`
-      );
+      let url = `http://sweeftdigital-intern.eu-central-1.elasticbeanstalk.com/user/${page}/${userNumber}`;
+      if (isFriend && userId) {
+        url = `http://sweeftdigital-intern.eu-central-1.elasticbeanstalk.com/user/${userId}/friends/${page}/${userNumber}`;
+      }
+      const response = await fetch(url);
       const data = await response.json();
       if (Array.isArray(data.list)) {
         setUsers((prev) => [...prev, ...data.list]);
@@ -18,7 +21,8 @@ const useFetchUsers = () => {
     };
 
     fetchData();
-  }, [page, userNumber]);
+  }, [page, userNumber, userId, isFriend]);
+
   useEffect(() => {
     const handleScroll = (e: any) => {
       const scrollHeight = e.target.documentElement.scrollHeight;
@@ -31,6 +35,7 @@ const useFetchUsers = () => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   });
+
   return users;
 };
 

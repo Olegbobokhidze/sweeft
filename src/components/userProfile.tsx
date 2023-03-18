@@ -1,6 +1,6 @@
 import { useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components";
-import useFetchUserFriends from "../hooks/useFetchUserFriends";
+import useFetchUsers from "../hooks/useFetchUsers";
 import useGetUser from "../hooks/useGetUser";
 import {
   NameSurname,
@@ -84,7 +84,7 @@ interface Props {
 const UserProfile = ({ userLink, setUserLink }: Props) => {
   const { id } = useParams();
   const user = useGetUser(Number(id));
-  const userFriends = useFetchUserFriends(Number(id));
+  const userFriends = useFetchUsers(Number(id), true);
   const navigate = useNavigate();
   return (
     <Main>
